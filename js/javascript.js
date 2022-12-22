@@ -1,70 +1,91 @@
-let usuario = 2234
-let argentinaDolar= 168
-let chileDolar= 883
-let brasilDolar= 5
-
-
-
-function login () {
-    let ingreso = false;
-
-    for (let i = 2; i >= 0; i--) {
-        let userPin = prompt ("ingresa tu PIN de ingreso. Tenes" + " " + (i+1) + " "  + "oportunidades");
-
-        if (userPin == usuario) {
-            alert("El ingreso fue Exitoso");
-            ingreso=true;
-            break;
-        } else {
-            alert( "Error, le quedan" + i + "intentos para ingresar");
-        }
-        
+class producto {
+    alimentos (nombre , precio ){
+        this.nombre = nombre;
+        this.precio = parseFloat(precio);
     }
-    return ingreso;
 }
 
-let exito = login() ;
 
-if (exito) {
+const alimentos = [
+    {nombre: "aceitunas", precio: "234"},
+    {nombre: "harina", precio: "140"},
+    {nombre: "cerveza", precio: "160"},
+    {nombre: "gaseosa", precio: "320"},
+    {nombre: "galletitas", precio: "150"},
+];
 
-    let opcion = prompt(
-        "Elija el pais que desee hacer la conversion: \n1- Argentina. \n2- Chile. \n3- Brasil. \nPresiona X para finalizar."
-    );
+
+let carrito = []
+
+let seleccion = prompt ("Hola, desea comprar algun producto?")
+
+while (seleccion != "si" && seleccion != "no") {
+    alert ("por favor ingresa si o no")
+    seleccion = prompt ("hola desea comprar algo si o no")
+}
+
+if (seleccion == "si") {
+    alert ("estos son nuestros productos")
+    let nuestrosAlimentos = alimentos.map ((alimentos) => alimentos.nombre + " " + alimentos.precio + "$" + " " );
+    alert (nuestrosAlimentos.join ())
+} else if (seleccion == "no") {
+    alert ("gracias por ingresar, vuelva pronto")
+}
+
+while (seleccion != "no") {
+    let producto = prompt ("agrega los productos a tu carrito")
+    let precio = 0
     
- while (opcion != "X" && opcion != "x") {
-    switch (opcion) {
-        case "1":
-                let conversion = parseInt(prompt ("ingresa cantidad de dolares a convertir"))
-                if (conversion = argentinaDolar) {
-                    conversion = conversion * argentinaDolar 
-                    alert("son $"+ conversion + "pesos Argentinos")
-                }
-            
+    if (producto == "aceitunas" || producto == "harina" || producto == "cerveza" || producto == "gaseosa" || producto == "galletitas") {
+        switch (producto) {
+            case "aceitunas":
+                precio = 234;
             break;
-        case "2":
-            let conversion2 = parseInt(prompt ("ingresa cantidad de dolares a convertir"))
-                if (conversion2 = chileDolar) {
-                    conversion2 = conversion2 * chileDolar 
-                    alert("son $"+ conversion2 + "pesos Chilenos")
-                }
+            case "harina":
+                precio = 140;
             break;
-        case "3":
-            let conversion3 = parseInt(prompt ("ingresa cantidad de dolares a convertir"))
-                if (conversion3 = brasilDolar) {
-                    conversion3 = conversion3 * brasilDolar 
-                    alert("son $"+ conversion3 + "Reales Brasileños")
-                }
+            case "cerveza":
+                precio = 160;
             break;
-        
-        default: 
-            alert("Opcion no valida");
+            case "gaseosa":
+                precio = 320;
             break;
-            
+            case "galletitas":
+                precio = 150;
+            break;
+        default:
+            break;
+        }
+    
+
+    let unidades = parseInt (prompt ("que cantidad de productos quiere comprar?"))
+
+    carrito.push ({producto, unidades,precio})
+    } else {
+        alert (" no tenemos ese producto en stock ")
     }
-    opcion = prompt(
-        "Elija el pais que desee hacer la conversion: \n1- Argentina. \n2- Chile. \n3- Brasil. \nPresiona X para finalizar."
-    );
- }
-} 
+    seleccion = prompt ("desea seguir comprando?")
+
+    while (seleccion == "no") {
+        alert ("gracias por su compra!!")
+        carrito.forEach((carritoFinal) =>{
+            alert (`producto: ${carritoFinal.producto}, unidades: ${carritoFinal.unidades}, total a pagar por producto ${carritoFinal.precio}` )
+        })
+        break;
+    }
+
+}
+
+const total = carrito.reduce ((acc, el)=> acc + el.precio * el.unidades, 0)
+
+console.log(`el total a pagar de su compra es: ${total} `);
+alert (`el total a pagar de su compra es: ${total} `)
+
+
+function cargarProductos (arr, producto) {
+    arr.push (producto)
+}
+
+cargarProductos ( producto, new alimentos ("empanadas" , 146))
 
 

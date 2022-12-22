@@ -1,7 +1,7 @@
 let usuario = 2234
-let argentinaDolar= 168.08
-let chileDolar= 883.4
-let brasilDolar= 5.21
+let argentinaDolar= 168
+let chileDolar= 883
+let brasilDolar= 5
 
 
 
@@ -35,7 +35,7 @@ if (exito) {
     switch (opcion) {
         case "1":
                 let conversion = parseInt(prompt ("ingresa cantidad de dolares a convertir"))
-                if (conversion <= argentinaDolar) {
+                if (conversion = argentinaDolar) {
                     conversion = conversion * argentinaDolar 
                     alert("son $"+ conversion + "pesos Argentinos")
                 }
@@ -43,14 +43,14 @@ if (exito) {
             break;
         case "2":
             let conversion2 = parseInt(prompt ("ingresa cantidad de dolares a convertir"))
-                if (conversion2 <= chileDolar) {
+                if (conversion2 = chileDolar) {
                     conversion2 = conversion2 * chileDolar 
                     alert("son $"+ conversion2 + "pesos Chilenos")
                 }
             break;
         case "3":
             let conversion3 = parseInt(prompt ("ingresa cantidad de dolares a convertir"))
-                if (conversion3 <= brasilDolar) {
+                if (conversion3 = brasilDolar) {
                     conversion3 = conversion3 * brasilDolar 
                     alert("son $"+ conversion3 + "Reales Brasileños")
                 }
